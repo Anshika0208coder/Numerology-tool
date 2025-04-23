@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Numerology Predictions | Pradeep Chauhan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0d1b2a, #1a2639);
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 12px;
+      font-size: 1rem;
+      margin-top: 15px;
+      border: none;
+      border-radius: 6px;
+    }
+    input {
+      width: 200px;
+    }
+    button {
+      background-color: #ffd700;
+      color: #000;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .contact {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .contact strong {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Numerology by Pradeep Chauhan</h1>
+  <p>Enter your birthdate or any number (1–99) to discover your numerology insight</p>
+  <input type="number" id="numberInput" placeholder="e.g. 5 or 27" />
+  <br>
+  <button onclick="getNumerology()">Get Prediction</button>
+  <div id="result"></div>
+
+  <div class="contact">
+    <p><strong>For personal consultations:</strong></p>
+    <p>Call/WhatsApp: <strong>+91-9876543210</strong></p>
+    <p>Email: <strong>astropradeep@example.com</strong></p>
+    <p>Instagram: <strong>@astro.pradeep</strong></p>
+  </div>
+
+  <script>
+    const numerology = {
+      1: "You are a born leader with ambition and drive. You thrive when you're in control and pioneering new paths. People respect your determination and courage.",
+      2: "You're a natural peacemaker, sensitive and diplomatic. You value relationships and work well as part of a team. Harmony is your strength.",
+      3: "You are highly creative and expressive. You bring joy and enthusiasm to others through your words, art, or ideas. A born communicator.",
+      4: "Hardworking and reliable, you're the foundation others depend on. You value structure and order, and you build long-lasting success step by step.",
+      5: "Freedom-loving and adventurous, you embrace change and excitement. You thrive in dynamic environments and inspire others with your energy.",
+      6: "You're the nurturer. Home, family, and community mean everything to you. You have a deep sense of responsibility and love creating harmony.",
+      7: "You are deeply intuitive and analytical. A seeker of truth, you thrive on knowledge, introspection, and spiritual exploration.",
+      8: "You’re ambitious and goal-driven. Success, power, and material achievement are part of your journey. Use your leadership wisely.",
+      9: "Compassionate and idealistic, you're here to help others. A humanitarian by heart, you're generous, wise, and destined to make an impact."
+    };
+
+    function reduceToSingleDigit(num) {
+      while (num > 9) {
+        num = num.toString().split('').reduce((a, b) => +a + +b, 0);
+      }
+      return num;
+    }
+
+    function getNumerology() {
+      let input = document.getElementById('numberInput').value.trim();
+      if (!input || isNaN(input)) {
+        document.getElementById('result').innerText = "Please enter a valid number.";
+        return;
+      }
+
+      let reduced = reduceToSingleDigit(Number(input));
+      let prediction = numerology[reduced];
+      document.getElementById('result').innerHTML = `<strong>Life Path Number: ${reduced}</strong><br>${prediction}`;
+    }
+  </script>
+</body>
+</html>
